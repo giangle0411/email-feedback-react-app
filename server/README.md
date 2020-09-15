@@ -8,3 +8,5 @@ heroku setup:
 6. open heroku url `heroku open`
 
 Passport strategy: a module that helps authenticate with one very specific provider.
+
+\*\* Create a credentials.js file in config that store google client ID and google client secret key
