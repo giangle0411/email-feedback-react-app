@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return 'Loading'
+        return
       case false:
-        return 'Im logged out'
+        return (
+          <li>
+            <a href="/auth/google">Login with Google</a>
+          </li>
+        )
       default:
-        return 'Im logged in!'
+        return (
+          <li>
+            <a href="/api/logout">Log Out</a>
+          </li>
+        )
     }
   }
 
   render() {
-    console.log(this.props.auth)
+    console.log(this.props)
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="/" className="left brand-logo">
+          <Link
+            to={this.props.auth ? '/surveys' : '/'}
+            className="left brand-logo"
+          >
             Email Feedback App
-          </a>
-          <ul className="right ">
-            {/* <li>
-              <a href="/">Login with Google</a>
-            </li> */}
-            {this.renderContent()}
-          </ul>
+          </Link>
+          <ul className="right ">{this.renderContent()}</ul>
         </div>
       </nav>
     )
