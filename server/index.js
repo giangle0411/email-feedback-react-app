@@ -5,6 +5,7 @@ const passport = require('passport')
 const bodyParser = require('body-parser')
 const keys = require('./config/credentials')
 require('./models/User')
+require('./models/Survey')
 require('./services/passport')
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
@@ -29,6 +30,7 @@ app.use(passport.session())
 
 require('./routes/authRoutes')(app)
 require('./routes/billingRoutes')(app)
+require('./routes/surveyRoutes')(app)
 
 // Setup production
 if (process.env.NODE_ENV === 'production') {
@@ -39,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
   // Express will serve up index.html if it doesnt recognise the route
   const path = require('path')
   app.get('*', (req, res) => {
-    res.semdFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 }
 
