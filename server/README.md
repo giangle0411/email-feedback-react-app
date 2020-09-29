@@ -14,3 +14,13 @@ Passport strategy: a module that helps authenticate with one very specific provi
 \*\* Create a credentials.js file in config that store google client ID and google client secret key
 
 -- TODO: Create more auth strategy (as possible)
+
+Stacks:
+
+- Express.js
+- React.js
+- Redux
+- Atlas Mongodb
+- Google OAuth
+- Sendgrid
+- Ngrok (used for SendGrid make post webhooks call)
